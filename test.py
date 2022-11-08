@@ -20,5 +20,8 @@ BASE = 'http://127.0.0.1:5000/'
 # response = requests.patch(BASE + 'video/2', {'views' : 102, 'likes' : 101})
 # print(response.json())
 
-response = requests.delete(BASE + 'video/1')
+# response = requests.delete(BASE + 'video/1')
+# print(response.json())
+
+response = requests.patch(BASE + 'video/2')
 print(response.json())

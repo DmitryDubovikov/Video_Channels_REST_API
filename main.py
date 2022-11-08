@@ -42,7 +42,7 @@ class Video(Resource):
     
     @marshal_with(resource_fields)
     def get(self, video_id):        
-        video = Video_model.query.filter_by(id=video_id).first()
+        video = Video_model.query.get(video_id)
         if not video:
             abort(404, message=f'video with id {video_id} does not exist')
         else:
@@ -51,7 +51,7 @@ class Video(Resource):
     @marshal_with(resource_fields)
     def put(self, video_id):
         args = video_put_args.parse_args()
-        video = Video_model.query.filter_by(id=video_id).first()
+        video = Video_model.query.get(video_id)
         if video:
             abort(409, message=f'video with id {video_id} already exists')
         else:
@@ -63,7 +63,7 @@ class Video(Resource):
     @marshal_with(resource_fields)
     def patch(self, video_id):
         args = video_update_args.parse_args()
-        video = Video_model.query.filter_by(id=video_id).first()
+        video = Video_model.query.get(video_id)
         if not video:
             abort(404, message=f'video with id {video_id} does not exist, cannot update')
         else:
